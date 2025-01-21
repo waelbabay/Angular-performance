@@ -4,13 +4,14 @@ import { CurrencyPipe, NgFor, NgOptimizedImage, UpperCasePipe } from '@angular/c
 import { AddToCartButtonComponent } from '../shared-ui/add-to-cart-button/add-to-cart-button.component';
 import { Product } from '../models/product';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { TableRowComponent } from './table-row/table-row.component';
 
 type SortableKeys = Pick<Product, 'description' | 'title' | 'category' | 'price'>
 
 @Component({
   selector: 'app-table-view',
   standalone: true,
-  imports: [NgFor, CurrencyPipe, UpperCasePipe, AddToCartButtonComponent, NgOptimizedImage, ScrollingModule],
+  imports: [TableRowComponent, ScrollingModule],
   templateUrl: './table-view.component.html',
   styleUrl: './table-view.component.scss'
 })

@@ -9,7 +9,10 @@ import { JlpButtonDirective } from '../jlp-button.directive';
     JlpButtonDirective,
   ],
   templateUrl: './add-to-cart-button.component.html',
-  styleUrl: './add-to-cart-button.component.scss'
+  styleUrl: './add-to-cart-button.component.scss',
+  host: {
+    class: 'add-to-cart'
+  }
 })
 export class AddToCartButtonComponent {
   protected readonly cartService = inject(CartService);

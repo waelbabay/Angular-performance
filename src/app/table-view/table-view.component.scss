@@ -27,29 +27,12 @@ table{
         background-color: var(--background-light-blue);
         font-weight: 900;
       }
-      td {
-        padding: 10px;
-      }
     }
   }
   img {
     text-align: center;
   }
 }
-
-.description {
-  width: 500px;
-}
-
-.title {
-  width: 300px;
-}
-
-.sale-price {
-  color: darkgreen;
-  font-weight: 600;
-}
-
 
 .button-col {
   max-width: 150px;
@@ -71,11 +54,6 @@ table{
   transform: rotate(90deg) translateX(-3px);
 }
 
-@media(max-width: 715px) {
-  .optional-col {
-    display: none;
-  }
-}
 .scroll-viewport {
   height: 650px;
   width: 100%;

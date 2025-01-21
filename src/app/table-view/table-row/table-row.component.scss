@@ -1,0 +1,22 @@
+td {
+    padding: 10px;
+  
+.description {
+    width: 500px;
+  }
+  
+  .title {
+    width: 300px;
+  }
+  
+  .sale-price {
+    color: darkgreen;
+    font-weight: 600;
+  }
+}
+
+@media(max-width: 715px) {
+    .optional-col {
+      display: none;
+    }
+  }
