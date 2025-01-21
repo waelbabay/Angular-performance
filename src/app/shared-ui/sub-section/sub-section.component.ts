@@ -6,8 +6,7 @@ import { NgFor } from '@angular/common';
 @Component({
   standalone: true,
   imports: [
-    CardComponent,
-    NgFor,
+    CardComponent
   ],
   selector: 'app-sub-section',
   templateUrl: './sub-section.component.html',

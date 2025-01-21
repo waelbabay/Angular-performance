@@ -1,12 +1,10 @@
-<section
-  aria-label="Featured Products"
->
+<section aria-label="Featured Products">
   <h2 class="visually-hidden">Featured Products</h2>
   <div class="sub-section">
-    <ng-container *ngFor="let product of featured()">
-      <app-card
-        [product]="product"
-      />
-    </ng-container>
+    @for (product of featured(); track product.id) {
+    <app-card [product]="product" />
+    }@empty {
+    <div>Sorry, there are no featured products !</div>
+    }
   </div>
 </section>
