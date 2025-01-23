@@ -5,8 +5,9 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TableViewComponent } from '../table-view/table-view.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LOGGER_TOKEN } from '../tokens/logger-token';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   standalone: true,
@@ -18,16 +19,17 @@ import { LOGGER_TOKEN } from '../tokens/logger-token';
     SideMenuComponent,
     TableViewComponent,
     MatSlideToggleModule,
+    MatProgressSpinner
   ]
 })
-export class ProductViewComponent{
+export class ProductViewComponent {
   @Input() set categoryId(val: string) {
     this.productService.selectedCategory.set(val);
   }
   protected readonly productService = inject(ProductService);
-  protected readonly logger = inject(LOGGER_TOKEN,  {
+  protected readonly logger = inject(LOGGER_TOKEN, {
     optional: true
-   });
+  });
 
   tableView = signal(false);
 
@@ -38,11 +40,11 @@ export class ProductViewComponent{
       filter((event) => event instanceof NavigationEnd),
       takeUntilDestroyed()
     ).subscribe(() => {
-        const content = document.querySelector<HTMLElement>('#productDetail');
-        if(content){
-          content.focus();
-        }
+      const content = document.querySelector<HTMLElement>('#productDetail');
+      if (content) {
+        content.focus();
       }
+    }
     )
   }
 

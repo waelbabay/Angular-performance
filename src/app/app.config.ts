@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     importProvidersFrom(
-      InMemoryWebApiModule.forRoot(AppData, { delay: 1000 })
+      InMemoryWebApiModule.forRoot(AppData, { delay: 3000 })
     ),
     {
       provide: LOGGER_TOKEN,
