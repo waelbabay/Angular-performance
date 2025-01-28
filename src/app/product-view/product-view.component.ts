@@ -7,7 +7,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TableViewComponent } from '../table-view/table-view.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { LoggerService } from '../services/logger.service';
+import { LOGGER_TOKEN } from '../tokens/logger-token';
 
 @Component({
   standalone: true,
@@ -27,7 +27,9 @@ export class ProductViewComponent {
     this.productService.selectedCategory.set(val);
   }
   protected readonly productService = inject(ProductService);
-  protected readonly logger = inject(LoggerService);
+  protected readonly logger = inject(LOGGER_TOKEN, {
+    optional: true
+  });
 
   tableView = signal(false);
 

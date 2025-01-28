@@ -8,7 +8,7 @@ import { JlpBorderButtonDirective } from '../shared-ui/jlp-border-button.directi
 import { TwoPanelLayoutComponent } from '../shared-ui/two-panel-layout/two-panel-layout.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgOptimizedImage } from '@angular/common';
-import { LoggerService } from '../services/logger.service';
+import { LOGGER_TOKEN } from '../tokens/logger-token';
 
 @Component({
   standalone: true,
@@ -25,7 +25,9 @@ import { LoggerService } from '../services/logger.service';
 })
 export class ContactComponent implements OnDestroy {
   private readonly contactService = inject(ContactService);
-  readonly logger = inject(LoggerService);
+  readonly logger = inject(LOGGER_TOKEN, {
+    optional: true
+  });
 
   model: ContactForm = {
     fullName: '',

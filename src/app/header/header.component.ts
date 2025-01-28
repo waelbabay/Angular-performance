@@ -4,7 +4,7 @@ import { ROUTE_TOKENS } from '../models/route-tokens';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { NgOptimizedImage } from '@angular/common';
-import { LoggerService } from '../services/logger.service';
+import { LOGGER_TOKEN } from '../tokens/logger-token';
 
 @Component({
   standalone: true,
@@ -19,7 +19,9 @@ import { LoggerService } from '../services/logger.service';
 })
 export class HeaderComponent {
   protected readonly cartService = inject(CartService);
-  private readonly logger = inject(LoggerService);
+  private readonly logger = inject(LOGGER_TOKEN, {
+    optional: true
+  });
   showMenu = false;
   readonly LINKS = LINKS;
   readonly ROUTE_TOKENS = ROUTE_TOKENS;

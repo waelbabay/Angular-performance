@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Optional } from '@angular/core';
 import { CommonModule, CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { catchError, ReplaySubject, takeUntil, tap } from 'rxjs';
 import { ContactForm } from '../models/contact-form';
@@ -12,7 +12,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CartService } from '../services/cart.service';
 import { ContactService } from '../services/contact.service';
 import { LOGGER_TOKEN } from '../tokens/logger-token';
-import { LoggerService } from '../services/logger.service';
 
 
 @Component({
@@ -35,7 +34,10 @@ import { LoggerService } from '../services/logger.service';
 export class CartComponent {
   readonly cartService = inject(CartService);
   readonly router = inject(Router);
-  readonly logger = inject(LoggerService);
+  readonly logger = inject(LOGGER_TOKEN, {
+    optional: true
+  });
+
   readonly contactService = inject(ContactService);
 
   readonly ROUTE_TOKENS = ROUTE_TOKENS;
