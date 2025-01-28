@@ -1,6 +1,6 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { ContactForm } from '../models/contact-form';
-import { ContactService  } from '../services/contact.service';
+import { ContactService } from '../services/contact.service';
 import { catchError, takeUntil, tap } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { JlpBorderButtonDirective } from '../shared-ui/jlp-border-button.directi
 import { TwoPanelLayoutComponent } from '../shared-ui/two-panel-layout/two-panel-layout.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgOptimizedImage } from '@angular/common';
-import { LOGGER_TOKEN } from '../tokens/logger-token';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   standalone: true,
@@ -23,11 +23,9 @@ import { LOGGER_TOKEN } from '../tokens/logger-token';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnDestroy{
+export class ContactComponent implements OnDestroy {
   private readonly contactService = inject(ContactService);
-  readonly logger = inject(LOGGER_TOKEN, {
-    optional: true
-   });
+  readonly logger = inject(LoggerService);
 
   model: ContactForm = {
     fullName: '',
@@ -69,7 +67,7 @@ export class ContactComponent implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-      this.destroyed$.next();
-      this.destroyed$.complete();
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }

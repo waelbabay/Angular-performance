@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { LINKS } from '../models/category';
 import { ROUTE_TOKENS } from '../models/route-tokens';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CartService  } from '../services/cart.service';
+import { CartService } from '../services/cart.service';
 import { NgOptimizedImage } from '@angular/common';
-import { LOGGER_TOKEN } from '../tokens/logger-token';
+import { LoggerService } from '../services/logger.service';
 
 @Component({
   standalone: true,
@@ -19,9 +19,7 @@ import { LOGGER_TOKEN } from '../tokens/logger-token';
 })
 export class HeaderComponent {
   protected readonly cartService = inject(CartService);
-  private readonly logger = inject(LOGGER_TOKEN,  {
-    optional: true
-   });
+  private readonly logger = inject(LoggerService);
   showMenu = false;
   readonly LINKS = LINKS;
   readonly ROUTE_TOKENS = ROUTE_TOKENS;
@@ -29,12 +27,12 @@ export class HeaderComponent {
   readonly menuItemOne = 'Menu Item One';
   readonly logoUrl = '../../assets/images/justlikepeople.png';
 
-  toggleMenu(){
+  toggleMenu() {
     this.showMenu = !this.showMenu;
     this.logger?.log('menu was closed!');
   }
 
-  selectCategory(name: string){
+  selectCategory(name: string) {
     this.showMenu = false;
     this.logger?.log(`${name} was clicked!`);
   }

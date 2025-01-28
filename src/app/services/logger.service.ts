@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { AppLoggerToken } from '../tokens/logger-token';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoggerService extends AppLoggerToken {
   LOGGER = 'LOGGER SERVICE IN THE BUNDLE';
-  error(error: string){
+  error(error: string) {
     console.error(error);
   }
 
